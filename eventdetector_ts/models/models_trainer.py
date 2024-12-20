@@ -140,7 +140,7 @@ class ModelTrainer:
 
         config_dict["models"] = list(self.best_models.keys())
 
-    def save_best_models(self, output_dir: str) -> None:
+    def save_best_models(self, output_dir: str, extension=".keras") -> None:
         """
         Save the best models to the specified output directory.
 
@@ -157,7 +157,7 @@ class ModelTrainer:
             path = os.path.join(output_dir, MODELS_DIR)
             # Save the model to the specified directory
             model_path = os.path.join(path, model_name)
-            model.save(model_path)
+            model.save(model_path + extension)
         logger_models.info("Models saved successfully.")
 
     def train_meta_model(self, type_training: str, hyperparams_mm_network: Tuple[int, int], output_dir: str) \

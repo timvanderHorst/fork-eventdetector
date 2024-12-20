@@ -36,7 +36,7 @@ def load_config_file(path: str) -> Dict:
         return config_
 
 
-def load_models(model_keys: List[str], output_dir: str) -> List[tf.keras.Model]:
+def load_models(model_keys: List[str], output_dir: str, extension=".keras") -> List[tf.keras.Model]:
     """
     Loads the trained models.
     Args:
@@ -50,7 +50,7 @@ def load_models(model_keys: List[str], output_dir: str) -> List[tf.keras.Model]:
     for key in model_keys:
         path = os.path.join(output_dir, MODELS_DIR)
         path = os.path.join(path, key)
-        models.append(tf.keras.models.load_model(path))
+        models.append(tf.keras.models.load_model(path + extension))
     return models
 
 
